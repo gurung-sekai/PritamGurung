@@ -1,33 +1,74 @@
+/* Make project cards feel clickable */
+.project { cursor: pointer; position: relative; }
+.project h3 a { position: relative; z-index: 1; } 
+
+
+
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 70%, white);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Nav underline slide-in */
+nav a {
+  position: relative;
+  text-decoration: none;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition: width .25s ease;
+}
+nav a:hover::after, nav a:focus-visible::after { width: 100%; }
+
+.btn {
+  position: relative;
+  transition: transform .15s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(56,189,248,.15);
+  border-color: color-mix(in oklab, var(--accent) 60%, var(--border));
+}
+.btn:active { transform: translateY(0); box-shadow: none; }
+
+
 .about-wrapper {
   display: flex;
-  justify-content: center;     /* center as a group */
-  align-items: stretch;        /* equal height */
-  gap: 2rem;                   /* space between card and image */
-  flex-wrap: wrap;             /* stacks on small screens */
+  justify-content: center;     
+  align-items: stretch;        
+  gap: 2rem;                   
+  flex-wrap: wrap;             
   margin: 0 auto;
-  max-width: 1100px;           /* optional page width */
+  max-width: 1100px;           
 }
 
 .about-card {
-  flex: 1 1 400px;             /* grow/shrink but keep a min width */
+  flex: 1 1 400px;             
 }
 
 .about-image {
-  flex: 0 0 300px;             /* fixed-ish width for the avatar */
+  flex: 0 0 300px;             
   display: flex;
-  align-items: center;         /* vertically center inside its box */
+  align-items: center;         
   justify-content: center;
 }
 
 .about-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;         /* optional styling */
+  border-radius: 12px;         
 }
 
 
 body {
-  background: #0e1420; /* your base color */
+  background: #0e1420; 
   position: relative;
   overflow-x: hidden;
 }
@@ -86,11 +127,6 @@ body::before {
               0 0 40px rgba(56,189,248,0.2);
 }
 
-
-
-
-
-
 body {
   background:
     radial-gradient(ellipse at top, rgba(0,80,255,0.25), transparent 70%),
@@ -108,10 +144,18 @@ h2 {
   to { background-position: 200% center; }
 }
 
+.project {
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(34,211,238,0.3),
+              0 0 40px rgba(56,189,248,0.2);
+}
 
 
-
-:root{ /* lol */
+:root{ 
   --bg-light:#f7f8fb;
   --panel-light:#ffffff;
   --text-light:#0f172a;
