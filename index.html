@@ -39,9 +39,19 @@
 
   <div id="particles"></div>
 
+<script>
+  // Make entire project cards clickable using the first link inside
+  document.querySelectorAll('.project').forEach(card => {
+    const link = card.querySelector('a[href]');
+    if (!link) return;
+    card.addEventListener('click', (e) => {
+      // Let normal clicks on actual links work
+      if (e.target.closest('a')) return;
+      window.open(link.href, '_blank', 'noopener');
+    });
+  });
+</script>
   
-
-
 <main class="container">
   <!-- About -->
 <section id="about" class="about">
@@ -145,11 +155,11 @@
   </footer>
 
   <script>
-    // Footer year
+    /* Footer year */
     const yearEl = document.getElementById('year');
     if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-    // Theme toggle with persistence
+    /* Theme toggle with persistence */
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
